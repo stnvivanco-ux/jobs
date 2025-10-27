@@ -4,6 +4,8 @@ metadata:
   name: hola-mundo-job
   namespace: stnvivanco92-dev   # o tu namespace
 spec:
+  completitions: 10
+  parallelism: 3
   template:
     spec:
       containers:
@@ -12,6 +14,7 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
           - |
+            sleep 60
             echo "hola mundo"
       restartPolicy: Never
   backoffLimit: 2  # Número de reintentos en caso de fall
