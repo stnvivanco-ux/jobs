@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hola-mundo-job
+  namespace: stnvivanco92-dev   # o tu namespace
+spec:
+  template:
+    metadata:
+      labels:
+        app: hola-mundo
+    spec:
+      containers:
+        - name: hola-mundo-container
+          image: busybox:latest
+          command: ["echo", "Hola mundo desde Kubernetes!"]
+      restartPolicy: Never
+  backoffLimit: 2
