@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hola-mundo-cronjob
+  namespace: stnvivanco92-dev 
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hola-mundo
+              image: busybox:latest
+              command: ["/bin/sh", "-c"]
+              args:
+              - |
+                sleep 60
+                echo "hola mundo"
+          restartPolicy: Never
+  backoffLimit: 2  # Número de reintentos en caso de fallo
