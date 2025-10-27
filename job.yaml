@@ -5,13 +5,13 @@ metadata:
   namespace: stnvivanco92-dev   # o tu namespace
 spec:
   template:
-    metadata:
-      labels:
-        app: hola-mundo
     spec:
       containers:
-        - name: hola-mundo-container
+        - name: hola-mundo
           image: busybox:latest
-          command: ["echo", "Hola mundo desde Kubernetes!"]
+          command: ["/bin/sh", "-c"]
+          args:
+          - |
+            echo "hola mundo"
       restartPolicy: Never
-  backoffLimit: 2
+  backoffLimit: 2  # Número de reintentos en caso de fall
